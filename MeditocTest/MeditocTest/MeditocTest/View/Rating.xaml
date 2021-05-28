@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"             
+             xmlns:local="clr-namespace:MeditocTest.ViewModel" 
+             x:Class="MeditocTest.View.Rating"
+             x:Name="this">
+    <StackLayout Orientation="Horizontal" HeightRequest="30" x:Name="stck_main">
+        <StackLayout.BindingContext>
+            <local:VMRating></local:VMRating>
+        </StackLayout.BindingContext>
+        <ffimageloading:CachedImage Source="{Binding star1}" x:Name="primera_estrella" WidthRequest="10" HeightRequest="10"></ffimageloading:CachedImage>
+        <ffimageloading:CachedImage Source="{Binding star2}" x:Name="segunda_estrella" WidthRequest="10" HeightRequest="10" ></ffimageloading:CachedImage>
+        <ffimageloading:CachedImage Source="{Binding star3}" x:Name="tercera_estrella" WidthRequest="10" HeightRequest="10"></ffimageloading:CachedImage>
+        <ffimageloading:CachedImage Source="{Binding star4}" x:Name="cuarta_estrella" WidthRequest="10" HeightRequest="10"></ffimageloading:CachedImage>
+        <ffimageloading:CachedImage Source="{Binding star5}" x:Name="quinta_estrella" WidthRequest="10" HeightRequest="10"></ffimageloading:CachedImage>
+    </StackLayout>
+</StackLayout>

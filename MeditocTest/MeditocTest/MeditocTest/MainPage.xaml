@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeditocTest.MainPage"             
+             xmlns:control="clr-namespace:MeditocTest.View"
+             xmlns:local="clr-namespace:MeditocTest.ViewModel" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Name="this"
+             >
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="#5ea3d2">
+            <StackLayout >
+                <StackLayout.BindingContext>
+                    <local:VMMain></local:VMMain>
+                </StackLayout.BindingContext>
+                <StackLayout HeightRequest="150" Margin="30">
+                    <Label Text="Hello, what do you want to watch?" FontSize="35" TextColor="White" FontAttributes="Bold"></Label>
+                    <Frame BackgroundColor="#94bede" HorizontalOptions="FillAndExpand" CornerRadius="30" HeightRequest="40" Padding="15, 5" Margin="0, 20">
+                        <StackLayout Orientation="Horizontal" Padding="0">
+                            <ffimageloading:CachedImage WidthRequest="18" HeightRequest="18" Aspect="AspectFit" Source="{local:ImageResources MeditocTest.Media.iconos.buscar.png}"></ffimageloading:CachedImage>
+                            <Entry Placeholder="Search" Text="{Binding TextSearch}" BackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" PlaceholderColor="WhiteSmoke" TextColor="white" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout BackgroundColor="#293646" Padding="20,40">
+
+
+                    <control:CarruselMovie  Movies="{Binding Popular}" x:Name="crrsl_upc" Text="UPCOMING"></control:CarruselMovie>
+
+                    <control:CarruselMovie Movies="{Binding TopRate}" x:Name="crrsl_TR" Text="TOP RATED"></control:CarruselMovie>
+
+                    <control:CarruselMovie Movies="{Binding UpComing}" x:Name="crrsl_pop" Text="POPULAR"></control:CarruselMovie>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="MeditocTest.View.CarruselMovie"             
+             xmlns:local="clr-namespace:MeditocTest.ViewModel" 
+             x:Name="this"        
+             xmlns:control="clr-namespace:MeditocTest.View">
+
+    <Label Text="{Binding Text, Source={x:Reference this}}" TextColor="#9dabb5" FontSize="16" FontAttributes="Bold"  Margin="0,14"/>
+
+    <CarouselView x:Name="crsl_main" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Movies, Source={x:Reference this}}" EmptyView="No se encontraron resultados" EmptyViewTemplate="#fff" PeekAreaInsets="100"  HeightRequest="250">
+        <CarouselView.ItemsLayout>
+            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="20" />
+        </CarouselView.ItemsLayout>
+        <CarouselView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnSelectedMovieCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <Frame CornerRadius="15" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True" BackgroundColor="Transparent">
+                        <ffimageloading:CachedImage Aspect="AspectFit" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Source="{Binding ItemMovie.poster_path}"></ffimageloading:CachedImage>
+                    </Frame>
+                    <Label Text="{Binding ItemMovie.title}" FontSize="12" TextColor="#9dabb5" FontAttributes="Bold" VerticalOptions="EndAndExpand"/>
+                    <control:Rating x:Name="rtng_stars" Rate="{Binding ItemMovie.vote_average}"></control:Rating>
+                </StackLayout>
+            </DataTemplate>
+        </CarouselView.ItemTemplate>
+    </CarouselView>
+</StackLayout>

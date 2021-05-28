@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"             
+             xmlns:local="clr-namespace:MeditocTest.ViewModel" xmlns:view="clr-namespace:MeditocTest.View"
+             x:Class="MeditocTest.View.MovieDetails"             
+             xmlns:control="clr-namespace:MeditocTest.View">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout x:Name="stck_main" BackgroundColor="#293646">
+                <StackLayout.BindingContext>
+                    <local:VMMovieDetails></local:VMMovieDetails>
+                </StackLayout.BindingContext>
+                
+                <Frame CornerRadius="15" HorizontalOptions="FillAndExpand" Padding="0" IsClippedToBounds="True" BackgroundColor="Transparent" HeightRequest="300">
+                    <ffimageloading:CachedImage Aspect="AspectFill"  HorizontalOptions="FillAndExpand" Source="{Binding CurrentMovie.poster_path}"></ffimageloading:CachedImage>
+                </Frame>
+                <StackLayout Margin="20">
+                    <Label Text="{Binding CurrentMovie.title}" FontSize="24" TextColor="#fff" FontAttributes="Bold"/>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Button WidthRequest="150" HorizontalOptions="Start" Text="Watch now" CornerRadius="20" BackgroundColor="#6b737f" TextColor="#fff" Margin="0, 10" FontSize="12"></Button>
+                        <control:Rating x:Name="rtng_star" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rate="{Binding CurrentMovie.vote_average}"></control:Rating>
+                    </StackLayout>
+                    
+                    <Label Text="{Binding CurrentMovie.overview}" FontSize="15" TextColor="#9dabb5" LineHeight="1.5"/>
+
+                    
+                    <CarouselView x:Name="crrsl_main" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Casting}" EmptyView="No items to display." PeekAreaInsets="100" Margin="0, 20" HeightRequest="100">
+                        <CarouselView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="20" />
+                        </CarouselView.ItemsLayout>
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame CornerRadius="30" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" Padding="0" IsClippedToBounds="True" BackgroundColor="Transparent">
+                                        <ffimageloading:CachedImage Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Source="{Binding profile_path}"></ffimageloading:CachedImage>
+                                    </Frame>
+                                    <Label Text="{Binding name}" FontSize="12" TextColor="#9dabb5" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Label FontAttributes="Bold" TextColor="#FFF" Text="Studio: "  Grid.Column="0" Grid.Row="0"></Label>
+                        <Label FontSize="15" TextColor="#9dabb5" Text="{Binding StudioName}" Grid.Column="1" Grid.Row="0"></Label>
+                        <Label FontAttributes="Bold" TextColor="#FFF" Text="Genre" Grid.Column="0" Grid.Row="1"></Label>
+                        <Label FontSize="15" TextColor="#9dabb5" Text="{Binding Genres}" Grid.Column="1" Grid.Row="1"></Label>
+
+                        <Label FontAttributes="Bold" TextColor="#FFF" Text="Release" Grid.Column="0" Grid.Row="2"></Label>
+                        <Label FontSize="15" TextColor="#9dabb5" Text="{Binding CurrentMovie.release_date, StringFormat='{0:yyyy}'}" Grid.Column="1" Grid.Row="2"></Label>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
