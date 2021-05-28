@@ -9,7 +9,7 @@
 
     <Label Text="{Binding Text, Source={x:Reference this}}" TextColor="#9dabb5" FontSize="16" FontAttributes="Bold"  Margin="0,14"/>
 
-    <CarouselView x:Name="crsl_main" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Movies, Source={x:Reference this}}" EmptyView="No se encontraron resultados" EmptyViewTemplate="#fff" PeekAreaInsets="100"  HeightRequest="250">
+    <CarouselView x:Name="crsl_main" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Movies, Source={x:Reference this}}" EmptyView="No se encontraron resultados" PeekAreaInsets="100"  HeightRequest="250">
         <CarouselView.ItemsLayout>
             <LinearItemsLayout Orientation="Horizontal" ItemSpacing="20" />
         </CarouselView.ItemsLayout>

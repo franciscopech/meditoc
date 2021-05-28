@@ -7,9 +7,18 @@
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Name="this"
              >
+    
     <ContentPage.Content>
         <ScrollView BackgroundColor="#5ea3d2">
             <StackLayout >
+                <StackLayout.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="control:StandardEntry">
+                            <Setter Property="Padding" Value="2"></Setter>
+                            <Setter Property="BorderThickness" Value="10"></Setter>
+                        </Style>
+                    </ResourceDictionary>
+                </StackLayout.Resources>
                 <StackLayout.BindingContext>
                     <local:VMMain></local:VMMain>
                 </StackLayout.BindingContext>
@@ -18,7 +27,7 @@
                     <Frame BackgroundColor="#94bede" HorizontalOptions="FillAndExpand" CornerRadius="30" HeightRequest="40" Padding="15, 5" Margin="0, 20">
                         <StackLayout Orientation="Horizontal" Padding="0">
                             <ffimageloading:CachedImage WidthRequest="18" HeightRequest="18" Aspect="AspectFit" Source="{local:ImageResources MeditocTest.Media.iconos.buscar.png}"></ffimageloading:CachedImage>
-                            <Entry Placeholder="Search" Text="{Binding TextSearch}" BackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" PlaceholderColor="WhiteSmoke" TextColor="white" />
+                            <control:StandardEntry Placeholder="Search" Text="{Binding TextSearch}" BackgroundColor="Transparent"  HorizontalOptions="FillAndExpand" PlaceholderColor="WhiteSmoke" TextColor="white"></control:StandardEntry>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
